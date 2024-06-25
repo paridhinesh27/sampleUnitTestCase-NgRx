@@ -1,0 +1,22 @@
+<h1>ToDo List</h1>
+
+<button id="fetch-button" type="button" (click)="featchToDoList()">Featch ToDo</button>
+
+
+  <ul *ngIf="todoListData.length; else empty">
+    <li *ngFor="let todo of todoListData; let i = index;">
+    {{todo?.id}}  {{ todo?.todo }} - {{ todo?.completed ? 'Done' : 'Pending' }}
+      <button [disabled]="todo?.completed" (click)="complete(todo)">
+      complete
+    </button>
+    </li>
+
+  </ul>
+
+  <ng-template #empty>
+    <div>No Data</div>
+  </ng-template>
+
+<button id="add-btn" (click)="addTodo(todoListData.length + 1)">Add</button>
+
+
